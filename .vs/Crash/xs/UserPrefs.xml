@@ -6,11 +6,7 @@
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
-          <Node name="Crash" expanded="True">
-            <Node name="Crash" expanded="True">
-              <Node name="Program.cs" selected="True" />
-            </Node>
-          </Node>
+          <Node name="Crash" expanded="True" />
         </State>
       </Pad>
     </Pads>
