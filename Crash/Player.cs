@@ -1,9 +1,9 @@
 ﻿using System;
 namespace Crash
 {
-    public class EmptyClass
+    public class Player
     {
-        public EmptyClass()
+        public Player()
         {
         }
     }
