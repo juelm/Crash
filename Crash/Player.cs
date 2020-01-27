@@ -5,9 +5,11 @@ namespace Crash
     {
         public string Name { get; set; }
         public String[] backpack = new String[5];
+        public int LifePoints { get; set; } = 60;
+
         public Player()
         {
-            
+            getPlayerInfo();
         }
 
         public void getPlayerInfo()

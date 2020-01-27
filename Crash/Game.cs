@@ -19,7 +19,7 @@ namespace Crash
                                     "20 x 20 ft. piece of heavy-duty canvas",
                                     "A map made of plastic",
                                     "Some whiskey",
-                                    "A compass",
+                                    //"A compass",
                                     "Family-size chocolate bars (one per person)"};
 
         public Game()
@@ -28,7 +28,9 @@ namespace Crash
             CrashTimer = new Timer(1000);
             Intro();
             CollectItemsAfterCrash();
-            
+            Tool compass = new Tool("compass");
+            compass.Use(player);
+            Console.WriteLine("Player points: " + player.LifePoints);
         }
 
         public void PrintScreenPartition()
@@ -68,7 +70,7 @@ namespace Crash
 
         public void PrintArrayWithIndexes(string[] array)
         {
-            for(int i = 0; i < array.Length; i++)
+            for (int i = 0; i < array.Length; i++)
             {
                 Console.WriteLine($"{i + 1}. {array[i]}");
             }
