@@ -7,7 +7,7 @@ namespace Crash
         public String[] backpack = new String[5];
         public Player()
         {
-            getPlayerInfo();
+            
         }
 
         public void getPlayerInfo()

@@ -1,9 +1,14 @@
 ﻿using System;
+using System.Timers;
 namespace Crash
 {
     public class Game
     {
         Player player;
+        Timer GameClock;
+        Timer CrashTimer;
+        int CrashTimerSeconds = 300;
+
         string[] ItemsInCraft = {"A ball of steel wool",
                                     "A small axe",
                                     "A loaded pistol",
@@ -19,9 +24,11 @@ namespace Crash
 
         public Game()
         {
+            player = new Player();
+            CrashTimer = new Timer(1000);
             Intro();
             CollectItemsAfterCrash();
-            player = new Player();
+            
         }
 
         public void PrintScreenPartition()
@@ -44,10 +51,17 @@ namespace Crash
         public void CollectItemsAfterCrash()
         {
 
-            Console.WriteLine($"You estimate that you have about 5 minutes until the helicopter explodes.  Your bag can hold 5 items so choose wisely.");
+            Console.WriteLine($"You estimate that you have about 5 minutes until the helicopter explodes.  Your bag can hold {player.backpack.Length} items so choose wisely.");
+
+            Console.WriteLine("Press Enter to Continue");
+            Console.ReadKey();
+
+            CrashTimer.Elapsed += new ElapsedEventHandler(CrashTimerEvent);
+            CrashTimer.Enabled = true;
+
             Console.WriteLine("\nYou glance around and see the following items:");
             PrintArrayWithIndexes(ItemsInCraft);
-            Console.WriteLine("\n\nPress Enter to Continue");
+            Console.WriteLine("Press Enter to Continue");
             Console.ReadKey();
 
         }
@@ -56,8 +70,27 @@ namespace Crash
         {
             for(int i = 0; i < array.Length; i++)
             {
-                Console.WriteLine($"{i}. {array[i]}");
+                Console.WriteLine($"{i + 1}. {array[i]}");
             }
+        }
+
+        public void CrashTimerEvent(Object source, ElapsedEventArgs e)
+        {
+
+            FormatAndDisplayTime();
+            CrashTimerSeconds--;
+
+        }
+
+        public void FormatAndDisplayTime()
+        {
+            //The coordinates should be moved to a field of a separate class.
+            Console.SetCursorPosition(55, 10);
+
+            int minutes = CrashTimerSeconds / 60;
+            int seconds = CrashTimerSeconds % (minutes * 60);
+
+            Console.Write($"{minutes}:{seconds}");
         }
     }
 }
