@@ -1,25 +1,27 @@
 {
   "format": 1,
   "restore": {
-    "/Users/matthewjuel/Projects/Crash/Crash/Crash.csproj": {}
+    "C:\\TLG Learning 2019\\Final project 2020\\Practical Application Project\\Crash\\Crash\\Crash.csproj": {}
   },
   "projects": {
-    "/Users/matthewjuel/Projects/Crash/Crash/Crash.csproj": {
+    "C:\\TLG Learning 2019\\Final project 2020\\Practical Application Project\\Crash\\Crash\\Crash.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/matthewjuel/Projects/Crash/Crash/Crash.csproj",
+        "projectUniqueName": "C:\\TLG Learning 2019\\Final project 2020\\Practical Application Project\\Crash\\Crash\\Crash.csproj",
         "projectName": "Crash",
-        "projectPath": "/Users/matthewjuel/Projects/Crash/Crash/Crash.csproj",
-        "packagesPath": "/Users/matthewjuel/.nuget/packages/",
-        "outputPath": "/Users/matthewjuel/Projects/Crash/Crash/obj/",
+        "projectPath": "C:\\TLG Learning 2019\\Final project 2020\\Practical Application Project\\Crash\\Crash\\Crash.csproj",
+        "packagesPath": "C:\\Users\\xieji\\.nuget\\packages\\",
+        "outputPath": "C:\\TLG Learning 2019\\Final project 2020\\Practical Application Project\\Crash\\Crash\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "/Users/matthewjuel/.config/NuGet/NuGet.Config"
+          "C:\\Users\\xieji\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "netcoreapp3.1"
         ],
         "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -50,7 +52,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/3.1.100/RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.101\\RuntimeIdentifierGraph.json"
         }
       }
     }
