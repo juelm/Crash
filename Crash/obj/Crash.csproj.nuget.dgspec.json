@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Apprenti3\\Documents\\Visual Studio 2019\\Projects\\Crash\\Crash\\Crash.csproj": {}
+    "C:\\TLG Learning 2019\\Final project 2020\\Practical Application Project\\Crash\\Crash\\Crash.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Apprenti3\\Documents\\Visual Studio 2019\\Projects\\Crash\\Crash\\Crash.csproj": {
+    "C:\\TLG Learning 2019\\Final project 2020\\Practical Application Project\\Crash\\Crash\\Crash.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Apprenti3\\Documents\\Visual Studio 2019\\Projects\\Crash\\Crash\\Crash.csproj",
+        "projectUniqueName": "C:\\TLG Learning 2019\\Final project 2020\\Practical Application Project\\Crash\\Crash\\Crash.csproj",
         "projectName": "Crash",
-        "projectPath": "C:\\Users\\Apprenti3\\Documents\\Visual Studio 2019\\Projects\\Crash\\Crash\\Crash.csproj",
-        "packagesPath": "C:\\Users\\Apprenti3\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Apprenti3\\Documents\\Visual Studio 2019\\Projects\\Crash\\Crash\\obj\\",
+        "projectPath": "C:\\TLG Learning 2019\\Final project 2020\\Practical Application Project\\Crash\\Crash\\Crash.csproj",
+        "packagesPath": "C:\\Users\\xieji\\.nuget\\packages\\",
+        "outputPath": "C:\\TLG Learning 2019\\Final project 2020\\Practical Application Project\\Crash\\Crash\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\Apprenti3\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\xieji\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -52,7 +52,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.0.100\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.101\\RuntimeIdentifierGraph.json"
         }
       }
     }
