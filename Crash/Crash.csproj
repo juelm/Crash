@@ -6,4 +6,7 @@
     <StartupObject>Crash.Program</StartupObject>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Compile Remove="EmptyClass.cs" />
+  </ItemGroup>
 </Project>
