@@ -1,4 +1,7 @@
-﻿using System;
+﻿//  Date: 1-24-2020
+//  C# Mini Project - Cras# a Text Adventure
+//  The Dextrous Devs - Jing Xie, Matt Juel, Radiah Jones
+//  Purpose: Class used as template for tools
 using System.Collections.Generic;
 using System.Text;
 

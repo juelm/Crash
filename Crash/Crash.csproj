@@ -9,4 +9,10 @@
   <ItemGroup>
     <Compile Remove="EmptyClass.cs" />
   </ItemGroup>
+
+  <ItemGroup>
+    <None Update="flyrightCopter.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
 </Project>

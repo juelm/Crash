@@ -1,14 +1,22 @@
-﻿using System;
+﻿//  Date: 1-24-2020
+//  C# Mini Project - Cras# a Text Adventure
+//  The Dextrous Devs - Jing Xie, Matt Juel, Radiah Jones
+//  Purpose:  Class that controls game logic and flow. 
+using System;
 using System.Timers;
+
 namespace Crash
 {
     public class Game
+
     {
-        Player player;
+        //  ***********
+        //  variables and properties
+        //  ***********
+        Player player = new Player();
         Timer GameClock;
         Timer CrashTimer;
         int CrashTimerSeconds = 300;
-
         string[] ItemsInCraft = {"A ball of steel wool",
                                     "A small axe",
                                     "A loaded pistol",
@@ -22,31 +30,56 @@ namespace Crash
                                     "A compass",
                                     "Family-size chocolate bars (one per person)"};
 
+        //  ***********
+        //  constructors
+        //  ***********
         public Game()
         {
-            player = new Player();
-            CrashTimer = new Timer(1000);
-            Intro();
-            CollectItemsAfterCrash();
+            //player = new Player();
+            //CrashTimer = new Timer(1000);
+            //Intro();
+            //CollectItemsAfterCrash();
             Console.WriteLine("Player points: " + player.LifePoints);
         }
 
-        public void PrintScreenPartition()
+        //  ***********
+        //  methods
+        //  ***********
+        public /*static*/ void PlayGame()
         {
-            Console.WriteLine("\n---------------------------------------------------------------------------");
+            CrashTimer = new Timer(1000);
+            Render.IntroScreen();
+            CollectItemsAfterCrash();
+            //isNewGame = Console.ReadKey().Key == ConsoleKey.Y ? true : false;
+
+            //if (isNewGame)
+            //{
+            //    Render.CrashScreen();
+            //}
+
+            //Render.EndScreen();
+            ////Sound.PlaySound("themeMusic.mp4", 10000);
+
+            //// clean up unmanaged audio resources
+            //Sound.DisposeAudio();
         }
 
-        public void Intro()
-        {
-            Console.Write("\n\n\n\n\n-----------------ASCII ART Goes Here--------------------\n\n\n\n\n");
-            PrintScreenPartition();
-            Console.WriteLine("The pilot can't hear you over the din as the smoke fills the cabin.  The helicopter is losing altitude fast.  You buckle your seat belt and brace for impact...");
-            Console.WriteLine("\nCRAS#​");
-            Console.WriteLine("\nAs the shock wears off you realize that you have crash landed in the mountains.The last town you flew over must have been 40 miles back.Avgas is spilling out of the tank dangerously close to the fire in the cabin.You must act quickly!");
-            Console.WriteLine("You glance around and see a handful of items that might help you make it back to civilization.");
-            Console.WriteLine("Press enter to continue: ");
-            Console.ReadKey();
-        }
+        //public void PrintScreenPartition()
+        //{
+        //    Console.WriteLine("\n---------------------------------------------------------------------------");
+        //}
+
+        //public void Intro()
+        //{
+        //    Console.Write("\n\n\n\n\n-----------------ASCII ART Goes Here--------------------\n\n\n\n\n");
+        //    PrintScreenPartition();
+        //    Console.WriteLine("The pilot can't hear you over the din as the smoke fills the cabin.  The helicopter is losing altitude fast.  You buckle your seat belt and brace for impact...");
+        //    Console.WriteLine("\nCRAS#​");
+        //    Console.WriteLine("\nAs the shock wears off you realize that you have crash landed in the mountains.The last town you flew over must have been 40 miles back.Avgas is spilling out of the tank dangerously close to the fire in the cabin.You must act quickly!");
+        //    Console.WriteLine("You glance around and see a handful of items that might help you make it back to civilization.");
+        //    Console.WriteLine("Press enter to continue: ");
+        //    Console.ReadKey();
+        //}
 
         public void CollectItemsAfterCrash()
         {
@@ -81,12 +114,15 @@ namespace Crash
                 Console.Write($"Enter the number of selected item {player.backpack.Count + 1} => ");
                 item = Console.ReadLine();
                 bool validNumber = Int32.TryParse(item, out itemNumber);
-                itemName = ItemsInCraft[itemNumber - 1];
-                Tool newTool = new Tool(itemName, 10); // instantiate a new tool and increase the player's life point by 10
-                if (!player.backpack.ContainsKey(newTool.Name))
+                if (validNumber && itemNumber > 0 && itemNumber < 13)
                 {
-                    player.backpack.Add(newTool.Name, newTool);
-                    newTool.Use(player);
+                    itemName = ItemsInCraft[itemNumber - 1];
+                    Tool newTool = new Tool(itemName, 10); // instantiate a new tool and increase the player's life point by 10
+                    if (!player.backpack.ContainsKey(newTool.Name))
+                    {
+                        player.backpack.Add(newTool.Name, newTool);
+                        newTool.Use(player);
+                    }
                 }
             }
         }

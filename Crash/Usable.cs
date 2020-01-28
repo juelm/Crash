@@ -1,11 +1,15 @@
-﻿using System;
+﻿//  Date: 1-24-2020
+//  C# Mini Project - Cras# a Text Adventure
+//  The Dextrous Devs - Jing Xie, Matt Juel, Radiah Jones
+//  Purpose: Interface to indicate that an item can be used 
+using System;
 using System.Collections.Generic;
 using System.Text;
 
 namespace Crash
 {
-     public interface Usable
+    public interface Usable
     {
-       void Use(Player player);
+        void Use(Player player);
     }
 }
