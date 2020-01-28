@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Crash
 {
-    interface Items
+    public interface Item
     {
     }
 }

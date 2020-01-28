@@ -1,10 +1,12 @@
 ﻿using System;
+using System.Collections.Generic;
 namespace Crash
 {
     public class Player
     {
         public string Name { get; set; }
-        public String[] backpack = new String[5];
+        //public String[] backpack = new String[5];
+        public Dictionary<Item, int> backpack = new Dictionary<Item, int>();
         public int LifePoints { get; set; } = 60;
 
         public Player()
