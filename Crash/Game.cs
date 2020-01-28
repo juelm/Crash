@@ -4,6 +4,7 @@
 //  Purpose:  Class that controls game logic and flow. 
 using System;
 using System.Timers;
+using System.Linq;
 
 namespace Crash
 {
@@ -17,6 +18,7 @@ namespace Crash
         Timer GameClock;
         Timer CrashTimer;
         int CrashTimerSeconds = 300;
+        bool isNewGame;
         string[] ItemsInCraft = {"A ball of steel wool",
                                     "A small axe",
                                     "A loaded pistol",
@@ -35,10 +37,6 @@ namespace Crash
         //  ***********
         public Game()
         {
-            //player = new Player();
-            //CrashTimer = new Timer(1000);
-            //Intro();
-            //CollectItemsAfterCrash();
             Console.WriteLine("Player points: " + player.LifePoints);
         }
 
@@ -47,15 +45,17 @@ namespace Crash
         //  ***********
         public /*static*/ void PlayGame()
         {
-            CrashTimer = new Timer(1000);
-            Render.IntroScreen();
-            CollectItemsAfterCrash();
-            //isNewGame = Console.ReadKey().Key == ConsoleKey.Y ? true : false;
+            const int CRASH_TIMER_INTERVAL = 1000;
 
-            //if (isNewGame)
-            //{
-            //    Render.CrashScreen();
-            //}
+            CrashTimer = new Timer(CRASH_TIMER_INTERVAL);
+            player.Name = Render.IntroScreen();
+            isNewGame = Console.ReadKey().Key == ConsoleKey.Y ? true : false;
+
+            if (isNewGame)
+            {
+                Render.CrashScreen();
+                CollectItemsAfterCrash();
+            }
 
             Render.EndScreen();
             ////Sound.PlaySound("themeMusic.mp4", 10000);
@@ -64,22 +64,10 @@ namespace Crash
             //Sound.DisposeAudio();
         }
 
-        //public void PrintScreenPartition()
-        //{
-        //    Console.WriteLine("\n---------------------------------------------------------------------------");
-        //}
-
-        //public void Intro()
-        //{
-        //    Console.Write("\n\n\n\n\n-----------------ASCII ART Goes Here--------------------\n\n\n\n\n");
-        //    PrintScreenPartition();
-        //    Console.WriteLine("The pilot can't hear you over the din as the smoke fills the cabin.  The helicopter is losing altitude fast.  You buckle your seat belt and brace for impact...");
-        //    Console.WriteLine("\nCRAS#​");
-        //    Console.WriteLine("\nAs the shock wears off you realize that you have crash landed in the mountains.The last town you flew over must have been 40 miles back.Avgas is spilling out of the tank dangerously close to the fire in the cabin.You must act quickly!");
-        //    Console.WriteLine("You glance around and see a handful of items that might help you make it back to civilization.");
-        //    Console.WriteLine("Press enter to continue: ");
-        //    Console.ReadKey();
-        //}
+        public void SetPlayerName(string name)
+        {
+            player.Name = name;
+        }
 
         public void CollectItemsAfterCrash()
         {
@@ -137,10 +125,8 @@ namespace Crash
 
         public void CrashTimerEvent(Object source, ElapsedEventArgs e)
         {
-
             FormatAndDisplayTime();
             CrashTimerSeconds--;
-
         }
 
         public void FormatAndDisplayTime()
