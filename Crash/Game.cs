@@ -28,9 +28,7 @@ namespace Crash
             CrashTimer = new Timer(1000);
             Intro();
             CollectItemsAfterCrash();
-            //Tool compass = new Tool("compass");
-            //compass.Use(player);
-            //Console.WriteLine("Player points: " + player.LifePoints);
+            Console.WriteLine("Player points: " + player.LifePoints);
         }
 
         public void PrintScreenPartition()
@@ -64,15 +62,11 @@ namespace Crash
             Console.WriteLine("\nYou glance around and see the following items:");
             PrintArrayWithIndexes(ItemsInCraft);
             SelectBackpackItems();
-            Console.WriteLine($"Your lifePoints: {player.LifePoints}");
-            Console.Write($"Your backpack contents are ");
-            foreach (var key in player.backpack)
+            Console.WriteLine($"Your backpack contents:");
+            foreach (var item in player.backpack)
             {
-                Console.WriteLine($"{key.Key.Name};");
+                Console.WriteLine($"* {item.Key.Name};");
             }
-            //Console.WriteLine("Press Enter to Continue");
-            //Console.ReadKey();
-
         }
 
         private void SelectBackpackItems()
@@ -81,15 +75,20 @@ namespace Crash
             int itemNumber;
             string itemName;
 
-            for (int i = 1; i < 6; i++)
+            while (player.backpack.Count < 5)
             {
-                Console.Write($"Enter the number of selected item {i} => ");
+
+                Console.Write($"Enter the number of selected item {player.backpack.Count + 1} => ");
                 item = Console.ReadLine();
                 bool validNumber = Int32.TryParse(item, out itemNumber);
                 itemName = ItemsInCraft[itemNumber - 1];
-                player.backpack.Add(new Tool(itemName), 10);
+                Tool newTool = new Tool(itemName, 10); // instantiate a new tool and increase the player's life point by 10
+                if (!player.backpack.ContainsKey(newTool))
+                {
+                    player.backpack.Add(newTool, newTool.Point);
+                    newTool.Use(player);
+                }
             }
-
         }
 
         public void PrintArrayWithIndexes(string[] array)
@@ -111,12 +110,12 @@ namespace Crash
         public void FormatAndDisplayTime()
         {
             //The coordinates should be moved to a field of a separate class.
-            Console.SetCursorPosition(55, 10);
+            //Console.SetCursorPosition(55, 10);
 
             int minutes = CrashTimerSeconds / 60;
             int seconds = CrashTimerSeconds % (minutes * 60);
 
-            Console.Write($"{minutes}:{seconds}");
+            //Console.Write($"{minutes}:{seconds}");
         }
     }
 }
