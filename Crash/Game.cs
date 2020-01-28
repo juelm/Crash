@@ -65,7 +65,7 @@ namespace Crash
             Console.WriteLine($"Your backpack contents:");
             foreach (var item in player.backpack)
             {
-                Console.WriteLine($"* {item.Key.Name};");
+                Console.WriteLine($"* {item.Key};");
             }
         }
 
@@ -83,9 +83,9 @@ namespace Crash
                 bool validNumber = Int32.TryParse(item, out itemNumber);
                 itemName = ItemsInCraft[itemNumber - 1];
                 Tool newTool = new Tool(itemName, 10); // instantiate a new tool and increase the player's life point by 10
-                if (!player.backpack.ContainsKey(newTool))
+                if (!player.backpack.ContainsKey(newTool.Name))
                 {
-                    player.backpack.Add(newTool, newTool.Point);
+                    player.backpack.Add(newTool.Name, newTool);
                     newTool.Use(player);
                 }
             }

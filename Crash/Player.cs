@@ -6,7 +6,7 @@ namespace Crash
     {
         public string Name { get; set; }
         //public String[] backpack = new String[5];
-        public Dictionary<Tool, int> backpack = new Dictionary<Tool, int>();
+        public Dictionary<string, Tool> backpack = new Dictionary<string, Tool>();
         public int LifePoints { get; set; } = 60;
 
         public Player()
