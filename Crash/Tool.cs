@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Crash
 {
-    class Tool : Usable, Item
+    public class Tool : Usable, Item
     {
         public string Name { get; set; }
         public Tool(string name)

@@ -30,7 +30,7 @@ namespace Crash
             CollectItemsAfterCrash();
             //Tool compass = new Tool("compass");
             //compass.Use(player);
-            Console.WriteLine("Player points: " + player.LifePoints);
+            //Console.WriteLine("Player points: " + player.LifePoints);
         }
 
         public void PrintScreenPartition()
@@ -64,11 +64,11 @@ namespace Crash
             Console.WriteLine("\nYou glance around and see the following items:");
             PrintArrayWithIndexes(ItemsInCraft);
             SelectBackpackItems();
-            Console.WriteLine($"Your lifePoints are {player.LifePoints}");
+            Console.WriteLine($"Your lifePoints: {player.LifePoints}");
             Console.Write($"Your backpack contents are ");
             foreach (var key in player.backpack)
             {
-                Console.Write($"{key.ToString()} ");
+                Console.WriteLine($"{key.Key.Name};");
             }
             //Console.WriteLine("Press Enter to Continue");
             //Console.ReadKey();
