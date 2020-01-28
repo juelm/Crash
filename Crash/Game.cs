@@ -19,7 +19,7 @@ namespace Crash
                                     "20 x 20 ft. piece of heavy-duty canvas",
                                     "A map made of plastic",
                                     "Some whiskey",
-                                    //"A compass",
+                                    "A compass",
                                     "Family-size chocolate bars (one per person)"};
 
         public Game()
@@ -28,8 +28,6 @@ namespace Crash
             CrashTimer = new Timer(1000);
             Intro();
             CollectItemsAfterCrash();
-            Tool compass = new Tool("compass");
-            compass.Use(player);
             Console.WriteLine("Player points: " + player.LifePoints);
         }
 
@@ -53,7 +51,7 @@ namespace Crash
         public void CollectItemsAfterCrash()
         {
 
-            Console.WriteLine($"You estimate that you have about 5 minutes until the helicopter explodes.  Your bag can hold {player.backpack.Length} items so choose wisely.");
+            Console.WriteLine($"You estimate that you have about 5 minutes until the helicopter explodes.  Your bag can hold 5 items so choose wisely."); //{player.backpack.Length} instead of 5
 
             Console.WriteLine("Press Enter to Continue");
             Console.ReadKey();
@@ -63,9 +61,34 @@ namespace Crash
 
             Console.WriteLine("\nYou glance around and see the following items:");
             PrintArrayWithIndexes(ItemsInCraft);
-            Console.WriteLine("Press Enter to Continue");
-            Console.ReadKey();
+            SelectBackpackItems();
+            Console.WriteLine($"Your backpack contents:");
+            foreach (var item in player.backpack)
+            {
+                Console.WriteLine($"* {item.Key};");
+            }
+        }
 
+        private void SelectBackpackItems()
+        {
+            string item;
+            int itemNumber;
+            string itemName;
+
+            while (player.backpack.Count < 5)
+            {
+
+                Console.Write($"Enter the number of selected item {player.backpack.Count + 1} => ");
+                item = Console.ReadLine();
+                bool validNumber = Int32.TryParse(item, out itemNumber);
+                itemName = ItemsInCraft[itemNumber - 1];
+                Tool newTool = new Tool(itemName, 10); // instantiate a new tool and increase the player's life point by 10
+                if (!player.backpack.ContainsKey(newTool.Name))
+                {
+                    player.backpack.Add(newTool.Name, newTool);
+                    newTool.Use(player);
+                }
+            }
         }
 
         public void PrintArrayWithIndexes(string[] array)
@@ -87,12 +110,12 @@ namespace Crash
         public void FormatAndDisplayTime()
         {
             //The coordinates should be moved to a field of a separate class.
-            Console.SetCursorPosition(55, 10);
+            //Console.SetCursorPosition(55, 10);
 
             int minutes = CrashTimerSeconds / 60;
             int seconds = CrashTimerSeconds % (minutes * 60);
 
-            Console.Write($"{minutes}:{seconds}");
+            //Console.Write($"{minutes}:{seconds}");
         }
     }
 }
