@@ -55,7 +55,22 @@ namespace Crash
 
         internal static void EndScreen()
         {
+            Console.WriteLine("\n");
+            Console.ForegroundColor = ConsoleColor.DarkGray;
+            Console.WriteLine("                    T H A N K S  F O R  P L A Y I N G");
+            Console.WriteLine();
+            CrashLogo();
+            Console.WriteLine();
+            string[] inFile = File.ReadAllLines(@"authors.txt");
+            Console.ForegroundColor = ConsoleColor.DarkGray;
+            Array.ForEach(inFile, line => Console.WriteLine(line));
+        }
 
+        private static void CrashLogo()
+        {
+            string[] inFile = File.ReadAllLines(@"crashScreen.txt");
+            Console.ForegroundColor = ConsoleColor.DarkRed;
+            Array.ForEach(inFile, line => Console.WriteLine(line));
         }
     }
 }
