@@ -52,5 +52,10 @@ namespace Crash
             Console.ForegroundColor = ConsoleColor.DarkYellow;
             Console.Write("\nAre you ready to go? Y / N: ");
         }
+
+        internal static void EndScreen()
+        {
+
+        }
     }
 }
