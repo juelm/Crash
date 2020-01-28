@@ -43,7 +43,7 @@ namespace Crash
         //  ***********
         //  methods
         //  ***********
-        public /*static*/ void PlayGame()
+        public void PlayGame()
         {
             const int CRASH_TIMER_INTERVAL = 1000;
 
