@@ -57,7 +57,7 @@ namespace Crash
             //    Render.CrashScreen();
             //}
 
-            //Render.EndScreen();
+            Render.EndScreen();
             ////Sound.PlaySound("themeMusic.mp4", 10000);
 
             //// clean up unmanaged audio resources
