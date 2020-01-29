@@ -29,7 +29,7 @@ namespace Crash
             Console.Clear();
             Console.Title = "Cras# - by the Dextrous Devs";
             // TODO: turn on sound
-            //Sound.PlaySound("copterStarting.mp3");
+            Sound.PlaySound("copterStarting.mp3");
 
             ReadFile("flyrightCopter.txt");
             Console.ForegroundColor = ConsoleColor.Blue;
@@ -81,10 +81,13 @@ namespace Crash
             Thread.Sleep(MEDIUM_PAUSE_MS);
             Console.WriteLine("\nYou buckle your seat belt and brace for impact...");
             Thread.Sleep(LONG_PAUSE_MS);
+            Sound.StopSound();
             Console.Clear();
 
             CrashLogo();
-            Thread.Sleep(LONG_PAUSE_MS);
+            // TODO: turn on sound
+            Sound.PlaySound("crashSound.mp3", LONG_PAUSE_MS);
+            //Thread.Sleep(LONG_PAUSE_MS);
             Console.ResetColor();
 
             Console.WriteLine("\nAs the shock wears off you realize that you have crash landed in the mountains.");
@@ -118,7 +121,7 @@ namespace Crash
             Console.ForegroundColor = ConsoleColor.DarkGray;
             Array.ForEach(inFile, line => Console.WriteLine(line));
             // TODO: turn on sound
-            //Sound.PlaySound("copterStarting.mp3", 10000);
+            Sound.PlaySound("copterStarting.mp3", LONG_PAUSE_MS);
         }
 
         private static void CrashLogo()

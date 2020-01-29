@@ -25,6 +25,11 @@ namespace Crash
             Thread.Sleep(milliSeconds);
         }
 
+        internal static void StopSound()
+        {
+            outputDevice.Stop();
+        }
+
         // dispose of unmanaged audio resources
         internal static void DisposeAudio()
         {

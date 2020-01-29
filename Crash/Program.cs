@@ -19,7 +19,10 @@ namespace Crash
 
             Console.Clear();
             Render.EndScreen();
-
+            
+            // clean up unmanaged audio resources
+            // TODO: turn on sound
+            Sound.DisposeAudio();
         }
     }
 }
