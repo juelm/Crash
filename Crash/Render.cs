@@ -69,6 +69,30 @@ namespace Crash
             return name;
         }
 
+        // TODO: decide if you want to use introscreen2
+        internal static void IntroScreen2()
+        {
+            Console.Title = "Cras# - by the Dextrous Devs";
+//            Console.BackgroundColor = ConsoleColor.Cyan;
+            Console.WriteLine("Welcome to Your Choice Travel!\n");
+            //Console.Write("What's your name? => ");  // TODO: validate
+            //string name = Console.ReadLine();
+            //Console.WriteLine($"Well hello, {name}! It looks like a lovely day to travel today.");
+            Console.WriteLine("Here at Your Choice Travel, we let you pick your mode of transportation.");
+            Console.Write($"Would you like to travel by 1) Helicopter, Train, or Balloon? => ");
+            string choice = Console.ReadLine().ToLower();
+            switch (choice)
+            {
+                case "1":
+                case "helicopter":
+                    IntroScreen();
+                    break;
+                default:
+                    Console.WriteLine($"We don't offer travel by {choice}");
+                    break;
+            }
+        }
+
         internal static void CrashScreen()
         {
             Console.Clear();
