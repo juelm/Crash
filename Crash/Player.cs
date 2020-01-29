@@ -31,10 +31,10 @@ namespace Crash
         public int GetBackPackItemsScore()
         {
             int TotalScore = 0;
-
-            foreach(string key in backpack.Keys)
+            // TODO: make backpack dictionary private and add methods to add to backpackitemscore each time it's selected
+            foreach(var item in backpack.Values)
             {
-                TotalScore += backpack[key].Point;
+                TotalScore += item.Point;
             }
 
             return TotalScore;

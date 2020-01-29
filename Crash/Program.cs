@@ -2,6 +2,7 @@
 //  C# Mini Project - Cras# a Text Adventure
 //  The Dextrous Devs - Jing Xie, Matt Juel, Radiah Jones
 //  Purpose:  Class that starts the game. 
+using System;
 
 namespace Crash
 {
