@@ -67,12 +67,6 @@ namespace Crash
 
             Console.Write("\n\nDo you want to play again?  Press Y to play or any other key to Exit: ");
             return Console.ReadKey().Key == ConsoleKey.Y ? true : false;
-
-
-
-            // clean up unmanaged audio resources
-            // TODO: turn on sound
-            //Sound.DisposeAudio();
         }
 
         public void SetPlayerName(string name)
@@ -147,7 +141,6 @@ namespace Crash
         private bool CheckForWin()
         {
             int WinningScoreThreshhold = 45;
-
             return player.BackPackItemsScore > WinningScoreThreshhold ? true : false;
         }
 

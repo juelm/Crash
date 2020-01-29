@@ -24,6 +24,9 @@
     <None Update="crashScreen.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Update="crashSound.mp3">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Update="flyrightCopter.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
