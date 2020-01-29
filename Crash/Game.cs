@@ -56,12 +56,16 @@ namespace Crash
             {
                 Render.CrashScreen();
                 CollectItemsAfterCrash();
-
+            }
+            else
+            {
+                return false;
             }
 
-            Render.DisplayFareWellMessage(CheckForWin(),player.BackPackItemsScore);
+            bool isWin = CheckForWin();
+            Render.DisplayFareWellMessage(isWin, player.BackPackItemsScore);
 
-            Console.Write("\n\nDo you want to play again?  ");
+            Console.Write("\n\nDo you want to play again?  Press Y to play or any other key to Exit: ");
             return Console.ReadKey().Key == ConsoleKey.Y ? true : false;
 
 
@@ -99,8 +103,9 @@ namespace Crash
             int itemNumber;
             string selectedNumber;
             int NUM_ITEMS_IN_CRAFT = ItemsInCraft.Length;
+            const int MAX_BACKPACK_ITEMS = 5;
 
-            while (player.backpack.Count < 5)
+            while (player.backpack.Count < MAX_BACKPACK_ITEMS)
             {
                 Console.Write($"Enter the number of selected item {player.backpack.Count + 1} => ");
                 selectedNumber = Console.ReadLine();
@@ -141,7 +146,7 @@ namespace Crash
 
         private bool CheckForWin()
         {
-            int WinningScoreThreshhold = 32;
+            int WinningScoreThreshhold = 45;
 
             return player.BackPackItemsScore > WinningScoreThreshhold ? true : false;
         }
