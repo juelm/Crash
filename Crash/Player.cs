@@ -15,6 +15,7 @@ namespace Crash
         public string Name { get; set; }
         public Dictionary<string, Tool> backpack = new Dictionary<string, Tool>();
         public int LifePoints { get; set; }
+        public int BackPackItemsScore { get; set; }
 
 
         //  ***********
@@ -34,5 +35,17 @@ namespace Crash
         //    Console.Write("\nBefore we go any further.  What do you want your character's name to be: ");
         //    Name = Console.ReadLine();
         //}
+
+        public int GetBackPackItemsScore()
+        {
+            int TotalScore = 0;
+
+            foreach(string key in backpack.Keys)
+            {
+                TotalScore += backpack[key].Point;
+            }
+
+            return TotalScore;
+        }
     }
 }
