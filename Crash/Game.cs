@@ -33,7 +33,6 @@ namespace Crash
                                     new Tool("A compass",1),
                                     new Tool("Family-size chocolate bars (one per person)",5)};
 
-
         //  ***********
         //  constructors
         //  ***********
@@ -66,9 +65,9 @@ namespace Crash
             return Console.ReadKey().Key == ConsoleKey.Y ? true : false;
 
 
-            ////Sound.PlaySound("themeMusic.mp4", 10000);
 
-            //// clean up unmanaged audio resources
+            // clean up unmanaged audio resources
+            // TODO: turn on sound
             //Sound.DisposeAudio();
         }
 
@@ -89,7 +88,7 @@ namespace Crash
             CrashTimer.Enabled = true;
 
             Console.WriteLine("\nYou glance around and see the following items:");
-            PrintItemsInCraftWithIndexes(ItemsInCraft);
+            PrintItemsInCraftWithIndexes();
             SelectBackpackItems();
             DisplayItemsInBackpack();
         }
@@ -99,14 +98,14 @@ namespace Crash
             Tool item;
             int itemNumber;
             string selectedNumber;
+            int NUM_ITEMS_IN_CRAFT = ItemsInCraft.Length;
 
             while (player.backpack.Count < 5)
             {
-
                 Console.Write($"Enter the number of selected item {player.backpack.Count + 1} => ");
                 selectedNumber = Console.ReadLine();
                 bool validNumber = Int32.TryParse(selectedNumber, out itemNumber);
-                if (validNumber && itemNumber > 0 && itemNumber < 13)
+                if (validNumber && itemNumber > 0 && itemNumber <= NUM_ITEMS_IN_CRAFT)
                 {
                     item = ItemsInCraft[itemNumber - 1];
                     if (!player.backpack.ContainsKey(item.Name))
@@ -121,21 +120,23 @@ namespace Crash
 
         public void DisplayItemsInBackpack()
         {
+            Console.WriteLine();
             Console.WriteLine($"Your backpack contents:");
             foreach (var item in player.backpack)
             {
-                Console.WriteLine($"* {item.Key};");
+                Console.WriteLine($"* {item.Key}");
             }
-            Console.WriteLine("Player total liftpoints: " + player.LifePoints);
+            Console.WriteLine();
+            Console.WriteLine("Player total lifepoints: " + player.LifePoints);
         }
-        public void PrintItemsInCraftWithIndexes(Tool[] items)
+
+        private void PrintItemsInCraftWithIndexes()
         {
-            int i = 1;
-            foreach (var item in items)
+            for (int i = 0; i < ItemsInCraft.Length; i++)
             {
-                Console.WriteLine($"{i}. {item.Name}");
-                i++;
+                Console.WriteLine($"{i + 1}. {ItemsInCraft[i].Name}");
             }
+            Console.WriteLine();
         }
 
         private bool CheckForWin()
@@ -144,7 +145,6 @@ namespace Crash
 
             return player.BackPackItemsScore > WinningScoreThreshhold ? true : false;
         }
-
 
         public void CrashTimerEvent(Object source, ElapsedEventArgs e)
         {

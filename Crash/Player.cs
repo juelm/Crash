@@ -17,7 +17,6 @@ namespace Crash
         public int LifePoints { get; set; }
         public int BackPackItemsScore { get; set; }
 
-
         //  ***********
         //  constructors
         //  ***********
@@ -29,13 +28,6 @@ namespace Crash
         //  ***********
         //  methods
         //  ***********
-        //public void getPlayerInfo()
-        //{
-        //    Console.WriteLine("Hello...");
-        //    Console.Write("\nBefore we go any further.  What do you want your character's name to be: ");
-        //    Name = Console.ReadLine();
-        //}
-
         public int GetBackPackItemsScore()
         {
             int TotalScore = 0;
