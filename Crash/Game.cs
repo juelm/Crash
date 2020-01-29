@@ -5,6 +5,7 @@
 using System;
 using System.Timers;
 using System.Linq;
+using System.Collections.Generic;
 
 namespace Crash
 {
@@ -19,18 +20,19 @@ namespace Crash
         Timer CrashTimer;
         int CrashTimerSeconds = 300;
         bool isNewGame;
-        string[] ItemsInCraft = {"A ball of steel wool",
-                                    "A small axe",
-                                    "A loaded pistol",
-                                    "Can of vegetable oil",
-                                    "Newspapers (one per person)",
-                                    "Cigarette lighter (without fluid)",
-                                    "Extra shirt and pants for each survivor",
-                                    "20 x 20 ft. piece of heavy-duty canvas",
-                                    "A map made of plastic",
-                                    "Some whiskey",
-                                    "A compass",
-                                    "Family-size chocolate bars (one per person)"};
+        Tool[] ItemsInCraft = {new Tool("A ball of steel wool", 8),
+                                    new Tool("A small axe",9),
+                                    new Tool("A loaded pistol",3),
+                                    new Tool("Can of vegetable oil",6),
+                                    new Tool("Newspapers (one per person)",7),
+                                    new Tool("Cigarette lighter (without fluid)",12),
+                                    new Tool("Extra shirt and pants for each survivor",10),
+                                    new Tool("20 x 20 ft. piece of heavy-duty canvas",11),
+                                    new Tool("A map made of plastic",2),
+                                    new Tool("Some whiskey",4),
+                                    new Tool("A compass",1),
+                                    new Tool("Family-size chocolate bars (one per person)",5)};
+
 
         //  ***********
         //  constructors
@@ -55,8 +57,10 @@ namespace Crash
             {
                 Render.CrashScreen();
                 CollectItemsAfterCrash();
+                CheckForWin();
             }
 
+            Console.ReadKey();
             Render.EndScreen();
             ////Sound.PlaySound("themeMusic.mp4", 10000);
 
@@ -81,47 +85,60 @@ namespace Crash
             CrashTimer.Enabled = true;
 
             Console.WriteLine("\nYou glance around and see the following items:");
-            PrintArrayWithIndexes(ItemsInCraft);
+            PrintItemsInCraftWithIndexes(ItemsInCraft);
             SelectBackpackItems();
-            Console.WriteLine($"Your backpack contents:");
-            foreach (var item in player.backpack)
-            {
-                Console.WriteLine($"* {item.Key};");
-            }
+            DisplayItemsInBackpack();
         }
 
         private void SelectBackpackItems()
         {
-            string item;
+            Tool item;
             int itemNumber;
-            string itemName;
+            string selectedNumber;
 
             while (player.backpack.Count < 5)
             {
 
                 Console.Write($"Enter the number of selected item {player.backpack.Count + 1} => ");
-                item = Console.ReadLine();
-                bool validNumber = Int32.TryParse(item, out itemNumber);
+                selectedNumber = Console.ReadLine();
+                bool validNumber = Int32.TryParse(selectedNumber, out itemNumber);
                 if (validNumber && itemNumber > 0 && itemNumber < 13)
                 {
-                    itemName = ItemsInCraft[itemNumber - 1];
-                    Tool newTool = new Tool(itemName, 10); // instantiate a new tool and increase the player's life point by 10
-                    if (!player.backpack.ContainsKey(newTool.Name))
+                    item = ItemsInCraft[itemNumber - 1];
+                    if (!player.backpack.ContainsKey(item.Name))
                     {
-                        player.backpack.Add(newTool.Name, newTool);
-                        newTool.Use(player);
+                        player.backpack.Add(item.Name, item);
+                        item.Use(player);
                     }
                 }
             }
         }
 
-        public void PrintArrayWithIndexes(string[] array)
+        public void DisplayItemsInBackpack()
         {
-            for (int i = 0; i < array.Length; i++)
+            Console.WriteLine($"Your backpack contents:");
+            foreach (var item in player.backpack)
             {
-                Console.WriteLine($"{i + 1}. {array[i]}");
+                Console.WriteLine($"* {item.Key};");
+            }
+            Console.WriteLine("Player total liftpoints: " + player.LifePoints);
+        }
+        public void PrintItemsInCraftWithIndexes(Tool[] items)
+        {
+            int i = 1;
+            foreach (var item in items)
+            {
+                Console.WriteLine($"{i}. {item.Name}");
+                i++;
             }
         }
+
+        private void CheckForWin()
+        {
+
+        }
+
+
 
         public void CrashTimerEvent(Object source, ElapsedEventArgs e)
         {
