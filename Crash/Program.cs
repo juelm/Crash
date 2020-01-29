@@ -9,8 +9,16 @@ namespace Crash
     {
         static void Main(string[] args)
         {
-            Game currentGame = new Game();
-            currentGame.PlayGame();
+            bool PlayAgain = true;
+            while (PlayAgain)
+            {
+                Game currentGame = new Game();
+                PlayAgain = currentGame.PlayGame();
+            }
+
+            Console.Clear();
+            Render.EndScreen();
+
         }
     }
 }

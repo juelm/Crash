@@ -44,7 +44,7 @@ namespace Crash
         //  ***********
         //  methods
         //  ***********
-        public void PlayGame()
+        public bool PlayGame()
         {
             const int CRASH_TIMER_INTERVAL = 1000;
 
@@ -56,11 +56,15 @@ namespace Crash
             {
                 Render.CrashScreen();
                 CollectItemsAfterCrash();
-                CheckForWin();
+
             }
 
-            Console.ReadKey();
-            Render.EndScreen();
+            Render.DisplayFareWellMessage(CheckForWin(),player.BackPackItemsScore);
+
+            Console.Write("\n\nDo you want to play again?  ");
+            return Console.ReadKey().Key == ConsoleKey.Y ? true : false;
+
+
 
             // clean up unmanaged audio resources
             // TODO: turn on sound
@@ -107,6 +111,7 @@ namespace Crash
                     if (!player.backpack.ContainsKey(item.Name))
                     {
                         player.backpack.Add(item.Name, item);
+                        player.BackPackItemsScore += item.Point;
                         item.Use(player);
                     }
                 }
@@ -134,9 +139,11 @@ namespace Crash
             Console.WriteLine();
         }
 
-        private void CheckForWin()
+        private bool CheckForWin()
         {
+            int WinningScoreThreshhold = 32;
 
+            return player.BackPackItemsScore > WinningScoreThreshhold ? true : false;
         }
 
         public void CrashTimerEvent(Object source, ElapsedEventArgs e)

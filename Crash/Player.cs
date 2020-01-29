@@ -15,6 +15,7 @@ namespace Crash
         public string Name { get; set; }
         public Dictionary<string, Tool> backpack = new Dictionary<string, Tool>();
         public int LifePoints { get; set; }
+        public int BackPackItemsScore { get; set; }
 
         //  ***********
         //  constructors
@@ -27,5 +28,16 @@ namespace Crash
         //  ***********
         //  methods
         //  ***********
+        public int GetBackPackItemsScore()
+        {
+            int TotalScore = 0;
+
+            foreach(string key in backpack.Keys)
+            {
+                TotalScore += backpack[key].Point;
+            }
+
+            return TotalScore;
+        }
     }
 }

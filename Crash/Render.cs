@@ -131,6 +131,18 @@ namespace Crash
         private static void ReadFile(string fileName)
         {
             inFile = File.ReadAllLines(fileName);
+
+        public static void DisplayFareWellMessage(bool isWinner, int score)
+        {
+            if (isWinner)
+            {
+                Console.WriteLine($"\n\nCongratulations! Based on the items you picked you got a survival score of {score} and made it to the nearest town");
+            }
+            else
+            {
+                Console.WriteLine($"\n\nOh Bummer, Based on the items you picked you got a survival score of {score} and never found your way back to town.");
+                Console.WriteLine("The search and rescue team said they found you hypothermic half dead muttering something about ternary operators");
+            }
         }
     }
 }
