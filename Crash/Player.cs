@@ -16,7 +16,6 @@ namespace Crash
         public Dictionary<string, Tool> backpack = new Dictionary<string, Tool>();
         public int LifePoints { get; set; }
 
-
         //  ***********
         //  constructors
         //  ***********
@@ -28,11 +27,5 @@ namespace Crash
         //  ***********
         //  methods
         //  ***********
-        //public void getPlayerInfo()
-        //{
-        //    Console.WriteLine("Hello...");
-        //    Console.Write("\nBefore we go any further.  What do you want your character's name to be: ");
-        //    Name = Console.ReadLine();
-        //}
     }
 }

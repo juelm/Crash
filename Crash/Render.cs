@@ -18,10 +18,7 @@ namespace Crash
         const int SHORT_PAUSE_MS = 500;
         const int MEDIUM_PAUSE_MS = 1000;
         const int LONG_PAUSE_MS = 3000;
-
-        //  ***********
-        //  constructors
-        //  ***********
+        static string[] inFile;
 
         //  ***********
         //  methods
@@ -31,10 +28,10 @@ namespace Crash
         {
             Console.Clear();
             Console.Title = "Cras# - by the Dextrous Devs";
+            // TODO: turn on sound
             //Sound.PlaySound("copterStarting.mp3");
 
-            // read in helicopter ASCII art file
-            string[] inFile = File.ReadAllLines(@"flyrightCopter.txt");
+            ReadFile("flyrightCopter.txt");
             Console.ForegroundColor = ConsoleColor.Blue;
             for (int i = 0; i < 9; i++)
             {
@@ -48,7 +45,6 @@ namespace Crash
             Console.WriteLine();
             Thread.Sleep(SHORT_PAUSE_MS);
 
-            // reads in intro text file
             Console.ForegroundColor = ConsoleColor.White;
             Console.WriteLine("Welcome to Flyright Copters!\n");
             Console.ForegroundColor = ConsoleColor.DarkYellow;
@@ -72,22 +68,6 @@ namespace Crash
             Console.Write("\nAre you ready to go? Y / N: ");
             return name;
         }
-
-        internal static void EndScreen()
-        {
-            Console.Clear();
-            Console.WriteLine("\n");
-            Console.ForegroundColor = ConsoleColor.DarkGray;
-            // TODO: ADD PLAYER NAME ON ENDSCREEN
-            Console.WriteLine($"                    T H A N K S  F O R  P L A Y I N G");
-            Console.WriteLine();
-            CrashLogo();
-            Console.WriteLine();
-            string[] inFile = File.ReadAllLines(@"authors.txt");
-            Console.ForegroundColor = ConsoleColor.DarkGray;
-            Array.ForEach(inFile, line => Console.WriteLine(line));
-        }
-
 
         internal static void CrashScreen()
         {
@@ -124,11 +104,33 @@ namespace Crash
             Console.WriteLine("make it back to civilization.");
         }
 
+        internal static void EndScreen()
+        {
+            Console.Clear();
+            Console.WriteLine("\n");
+            Console.ForegroundColor = ConsoleColor.DarkGray;
+            // TODO: ADD PLAYER NAME ON ENDSCREEN
+            Console.WriteLine($"                    T H A N K S  F O R  P L A Y I N G");
+            Console.WriteLine();
+            CrashLogo();
+            Console.WriteLine();
+            ReadFile("authors.txt");
+            Console.ForegroundColor = ConsoleColor.DarkGray;
+            Array.ForEach(inFile, line => Console.WriteLine(line));
+            // TODO: turn on sound
+            //Sound.PlaySound("copterStarting.mp3", 10000);
+        }
+
         private static void CrashLogo()
         {
-            string[] inFile = File.ReadAllLines(@"crashScreen.txt");
+            ReadFile("crashScreen.txt");
             Console.ForegroundColor = ConsoleColor.DarkRed;
             Array.ForEach(inFile, line => Console.WriteLine(line));
+        }
+
+        private static void ReadFile(string fileName)
+        {
+            inFile = File.ReadAllLines(fileName);
         }
     }
 }
