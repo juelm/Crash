@@ -131,6 +131,7 @@ namespace Crash
         private static void ReadFile(string fileName)
         {
             inFile = File.ReadAllLines(fileName);
+        }
 
         public static void DisplayFareWellMessage(bool isWinner, int score)
         {
