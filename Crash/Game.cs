@@ -65,7 +65,7 @@ namespace Crash
             bool isWin = CheckForWin();
             Render.DisplayFareWellMessage(isWin, player.BackPackItemsScore);
 
-            Console.Write("\n\nDo you want to play again? Y / N : ");
+            Console.Write("\n\nDo you want to play again?  Press Y to play or any other key to Exit: ");
             return Console.ReadKey().Key == ConsoleKey.Y ? true : false;
 
 

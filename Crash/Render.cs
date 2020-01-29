@@ -65,7 +65,7 @@ namespace Crash
             Thread.Sleep(MEDIUM_PAUSE_MS);
             Console.WriteLine($"\nSit back, relax, and enjoy the ride!");
             Console.ForegroundColor = ConsoleColor.DarkYellow;
-            Console.Write("\nAre you ready to go? Y / N: ");
+            Console.Write("\nAre you ready to go? Press Y to play or any other key to Exit: ");
             return name;
         }
 
