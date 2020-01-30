@@ -79,7 +79,11 @@ namespace Crash
             //string name = Console.ReadLine();
             //Console.WriteLine($"Well hello, {name}! It looks like a lovely day to travel today.");
             Console.WriteLine("Here at Your Choice Travel, we let you pick your mode of transportation.");
-            Console.Write($"Would you like to travel by 1) Helicopter, Train, or Balloon? => ");
+            Console.Write($"Would you like to travel by");
+            Console.WriteLine("1) Helicopter");
+            Console.WriteLine("2) Train");
+            Console.WriteLine("3) Balloon");
+            Console.Write("Enter your choice here => ");
             string choice = Console.ReadLine().ToLower();
             switch (choice)
             {
@@ -87,8 +91,16 @@ namespace Crash
                 case "helicopter":
                     IntroScreen();
                     break;
+                //case "2":
+                //case "train":
+                //    IntroScreenTrain();
+                //    break;
+                //case "3":
+                //case "balloon":
+                //    IntroScreenBalloon();
+                //    break;
                 default:
-                    Console.WriteLine($"We don't offer travel by {choice}");
+                    Console.WriteLine($"Sorry, we don't offer travel by {choice}");
                     break;
             }
         }
