@@ -49,8 +49,8 @@ namespace Crash
             const int CRASH_TIMER_INTERVAL = 1000;
 
             CrashTimer = new Timer(CRASH_TIMER_INTERVAL);
-            //player.Name = Render.IntroScreen();
-            Render.IntroScreen2();
+            player.Name = Render.IntroScreen();
+            //Render.IntroScreen2();
             isNewGame = Console.ReadKey().Key == ConsoleKey.Y ? true : false;
 
             if (isNewGame)
