@@ -1,17 +1,17 @@
 ﻿<Properties StartupConfiguration="{AEA0BE53-4382-490E-893B-D9C7CC183CCF}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="Crash/Program.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Crash/Render.cs">
     <Files>
-      <File FileName="Crash/Game.cs" Line="67" Column="1" />
-      <File FileName="Crash/Player.cs" Line="18" Column="52" />
-      <File FileName="Crash/Render.cs" Line="136" Column="26" />
-      <File FileName="Crash/Program.cs" Line="13" Column="18" />
+      <File FileName="Crash/Item.cs" Line="1" Column="1" />
+      <File FileName="Crash/Game.cs" Line="144" Column="10" />
+      <File FileName="Crash/ConsoleFrame.cs" Line="22" Column="21" />
+      <File FileName="Crash/Render.cs" Line="1" Column="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
           <Node name="Crash" expanded="True">
             <Node name="Crash" expanded="True">
-              <Node name="Program.cs" selected="True" />
+              <Node name="Render.cs" selected="True" />
             </Node>
           </Node>
         </State>

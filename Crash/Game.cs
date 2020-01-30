@@ -20,6 +20,7 @@ namespace Crash
         Timer CrashTimer;
         int CrashTimerSeconds = 300;
         bool isNewGame;
+        ConsoleFrame GameScreen = new ConsoleFrame();
         Tool[] ItemsInCraft = {new Tool("A ball of steel wool", 8),
                                     new Tool("A small axe",9),
                                     new Tool("A loaded pistol",3),
@@ -64,6 +65,10 @@ namespace Crash
 
             bool isWin = CheckForWin();
             Render.DisplayFareWellMessage(isWin, player.BackPackItemsScore);
+
+            Console.Clear();
+            GameScreen.Draw();
+            Console.ReadKey();
 
             Console.Write("\n\nDo you want to play again?  Press Y to play or any other key to Exit: ");
             return Console.ReadKey().Key == ConsoleKey.Y ? true : false;
