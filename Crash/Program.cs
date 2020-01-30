@@ -10,6 +10,7 @@ namespace Crash
     {
         static void Main(string[] args)
         {
+            Console.SetWindowSize(150, 45);
             bool PlayAgain = true;
             while (PlayAgain)
             {

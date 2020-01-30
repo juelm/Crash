@@ -152,7 +152,10 @@ namespace Crash
         public void CrashTimerEvent(Object source, ElapsedEventArgs e)
         {
             FormatAndDisplayTime();
-            CrashTimerSeconds--;
+            if(CrashTimerSeconds > 0)
+            {
+                CrashTimerSeconds--;
+            }
         }
 
         public void FormatAndDisplayTime()

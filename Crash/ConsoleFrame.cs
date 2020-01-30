@@ -6,24 +6,34 @@ namespace Crash
     {
         private static int FrameWidth = Console.WindowWidth;
         private static int FrameHeight = Console.WindowHeight;
+        private int LeftMargin = 2;
+        private int RightMargin = 2;
+        private int TopMargin = 1;
+        private int BottomMargin = 1;
+        private int InnerMargins = 1;
+        private int StoryFrameWidth = FrameWidth - 50;
+        private int StatsFrameHeight = 20;
+        private int BackPackFrameHeight = 10;
+
 
 
         Frame StatsFrame;
         Frame StoryFrame;
-        Frame UserInputFrame;
+        Frame BackpackFrame;
 
         public ConsoleFrame()
         {
-            StatsFrame = new Frame(FrameHeight / 3, FrameWidth, 0, 0, ConsoleColor.Gray, ConsoleColor.Magenta, "Stats");
-            StoryFrame = new Frame(FrameHeight / 3, FrameWidth, 0, StatsFrame.Height, ConsoleColor.Gray, ConsoleColor.Magenta, "Story");
-            UserInputFrame = new Frame(FrameHeight / 3, FrameWidth, 0, StatsFrame.Height + StoryFrame.Height, ConsoleColor.Gray, ConsoleColor.Magenta, "User Input");
+            StatsFrame = new Frame(StatsFrameHeight, FrameWidth - StoryFrameWidth - LeftMargin - RightMargin - InnerMargins, LeftMargin + StoryFrameWidth + InnerMargins, TopMargin, ConsoleColor.DarkGray, ConsoleColor.Magenta, "Stats");
+            BackpackFrame = new Frame(BackPackFrameHeight, FrameWidth - StoryFrameWidth - LeftMargin - RightMargin - InnerMargins, LeftMargin + StoryFrameWidth + InnerMargins, StatsFrame.Height + TopMargin + InnerMargins, ConsoleColor.DarkGray, ConsoleColor.Yellow, "BackPack");
+            StoryFrame = new Frame(FrameHeight - TopMargin - BottomMargin, StoryFrameWidth,LeftMargin, TopMargin, ConsoleColor.DarkGray, ConsoleColor.Cyan, "Story");
+            
         }
 
         public void Draw()
         {
             StatsFrame.DrawFrame();
             StoryFrame.DrawFrame();
-            UserInputFrame.DrawFrame();
+            BackpackFrame.DrawFrame();
         }
     }
 
@@ -40,6 +50,8 @@ namespace Crash
         protected ConsoleColor borderColor;
         protected ConsoleColor textColor;
         protected Point statCursor;
+        private int InnerTextLeftMargin = 3;
+        private int InnerTextTopMargin = 2;
 
         public virtual Point GetCursorPosition()
         {
@@ -102,7 +114,7 @@ namespace Crash
             Console.BackgroundColor = borderColor;
             Console.Write(title);
             Console.ResetColor();
-            statCursor = new Point(cursorX + 3, cursorY + height / 2 + 1);
+            statCursor = new Point(cursorX, cursorY + height / 2 + 1);
         }
     }
 
